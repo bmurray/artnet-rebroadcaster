@@ -99,13 +99,14 @@ func runNode(ctx context.Context, logger logrus.FieldLogger, listenOn net.IP, br
 			IP:   net.IPv4(255, 255, 255, 255),
 			Port: packet.ArtNetPort,
 		}),
-		artnet.NodeListenIP(listenOn),
+		// artnet.NodeListenIP(listenOn),
 	)
 
 	// pt := code.PortType(0).WithInput(true).WithOutput(true).WithType("DMX512")
 	// gi := code.
 
 	node.RegisterCallback(code.OpDMX, func(p packet.ArtNetPacket) {
+		// logger.Info("Received DMX packet")
 		pkt, ok := p.(*packet.ArtDMXPacket)
 		if !ok {
 			return
