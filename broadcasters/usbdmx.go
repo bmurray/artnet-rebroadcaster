@@ -2,9 +2,11 @@ package broadcasters
 
 import (
 	"context"
+	"log"
 	"net"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/jsimonetti/go-artnet/packet"
 	"github.com/oliread/usbdmx"
@@ -68,6 +70,12 @@ func (n *USBDMX) Start(ctx context.Context) {
 		select {
 		case <-ctx.Done():
 			return
+		case <-time.After(10 * time.Millisecond):
+			for _, v := range n.dmx {
+				if err := v.controller.Render(); err != nil {
+					log.Fatalf("Failed to render output: %s", err)
+				}
+			}
 		}
 	}
 
@@ -79,13 +87,8 @@ func (n *USBDMX) Broadcast(ctx context.Context, pkt *packet.ArtDMXPacket, conn *
 		if v.universe != pkt.SubUni {
 			continue
 		}
-
 		for i := 0; i < 512; i++ {
 			v.controller.SetChannel(int16(i+1), pkt.Data[i])
-		}
-
-		if err := v.controller.Render(); err != nil {
-			return err
 		}
 	}
 

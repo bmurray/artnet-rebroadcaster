@@ -36,6 +36,7 @@ func main() {
 
 	flag.Parse()
 
+	go udmx.Start(ctx)
 	logger := logrus.New()
 	// logger.SetLevel(logrus.WarnLevel)
 
