@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jsimonetti/go-artnet/packet"
+	"github.com/bmurray/go-artnet/packet"
 	"github.com/oliread/usbdmx"
 	"github.com/oliread/usbdmx/ft232"
 )

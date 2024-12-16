@@ -5,7 +5,7 @@ import (
 	"net"
 	"net/netip"
 
-	"github.com/jsimonetti/go-artnet/packet"
+	"github.com/bmurray/go-artnet/packet"
 )
 
 type DMXNetworkHost struct {

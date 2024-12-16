@@ -9,9 +9,9 @@ import (
 	"os/signal"
 
 	"github.com/bmurray/artnet-rebroadcaster/broadcasters"
-	"github.com/jsimonetti/go-artnet"
-	"github.com/jsimonetti/go-artnet/packet"
-	"github.com/jsimonetti/go-artnet/packet/code"
+	"github.com/bmurray/go-artnet"
+	"github.com/bmurray/go-artnet/packet"
+	"github.com/bmurray/go-artnet/packet/code"
 	"github.com/sirupsen/logrus"
 )
 

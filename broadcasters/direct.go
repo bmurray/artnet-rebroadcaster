@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/bmurray/artnet-rebroadcaster/dmx"
-	"github.com/jsimonetti/go-artnet/packet"
+	"github.com/bmurray/go-artnet/packet"
 )
 
 type dmxHost struct {
